@@ -3,6 +3,12 @@ import "@fontsource-variable/public-sans";
 
 import EarthMapearthmap1k from "../images/earthmap1k.jpg";
 import EarthClouds from "../images/2k_earth_clouds.jpg";
+import Moon from "../images/2k_moon.jpg";
+import Sun from "../images/Map_of_the_full_sun.jpg";
+import SunClouds from "../images/sun2.jpg";
+import Mercury from "../images/mercury.jpg";
+import Venus from "../images/venus.jpg";
+import VenusClouds from "../images/venusClouds.jpg";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -17,15 +23,16 @@ console.log("orbits=>", orbits.planets);
 const container = document.querySelector("#app");
 const localEarth = EarthMapearthmap1k;
 const localCloud = EarthClouds;
-const localMoon = "../images/2k_moon.jpg";
+const localMoon = Moon;
 const texture = new THREE.TextureLoader().load(localEarth);
 const texture_clouds = new THREE.TextureLoader().load(localCloud);
 const texture_moon = new THREE.TextureLoader().load(localMoon);
-const localSunTexture = "../images/Map_of_the_full_sun.jpg";
-const localSunClouds = "../images/sun2.jpg";
-const localMercuryTexture = "../images/mercury.jpg";
-const localVenusTexture = "../images/venus.jpg";
-const localVenusClouds = "../images/venusClouds.jpg";
+
+const localSunTexture = Sun;
+const localSunClouds = SunClouds;
+const localMercuryTexture = Mercury;
+const localVenusTexture = Venus;
+const localVenusClouds = VenusClouds;
 const sunTexture = new THREE.TextureLoader().load(localSunClouds);
 const sunClouds = new THREE.TextureLoader().load(localSunTexture);
 const mercuryTexture = new THREE.TextureLoader().load(localMercuryTexture);
