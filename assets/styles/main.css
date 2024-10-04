@@ -1,0 +1,43 @@
+@import "normalize.css";
+@import "base.css";
+
+/* html {
+  overflow: hidden;
+  background-color: var(--base-100);
+  color: var(--base-content);
+  font-family: 'Public Sans Variable', sans-serif;
+} */
+
+/* body {
+  padding-inline: 1rem;
+} */
+
+p {
+  margin-block: 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 0.2rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+}
+
+.btn-primary  {
+  color: var(--primary-content);
+  background-color: var(--primary-color);
+}
+
+.alert {
+  display: block;
+  margin-block: 2rem;
+  padding-inline: 2rem;
+  padding-block: 1.5rem;
+  background-color: var(--error);
+  color: var(--error-content);
+  border-radius: 0.2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
