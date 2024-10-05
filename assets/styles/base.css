@@ -1,14 +1,17 @@
 :root{
-  --primary-color: #0074ff;
-  --primary-content: #000516;
+  --primary-color: 0, 0%, 100%;
+  --primary-content: 0, 0%, 9%;
   --secondary: #4400ff;
   --secondary-content: #d0daff;
   --neutral: #040404;
-  --neutral-content: #c4c4c4;
-  --base-100: #242424;
-  --base-200: #1e1e1e;
-  --base-300: #181818;
-  --base-content: #cecece;
+  --neutral-content: 0, 0%, 77%;
+  --base-100: 0, 0%, 0%;
+  --base-200: 0, 0%, 12%;
+  --base-300: 0, 2%, 18%;
+  --base-content: 0, 0%, 100%;
   --error: #ff4e6a;
   --error-content: #160204;
+
+  --font-family-tourney: 'Tourney Variable', system-ui;
+  --font-family-roboto: 'Roboto', sans-serif;
 }

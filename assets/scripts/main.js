@@ -1,5 +1,10 @@
+//Styles
 import "../styles/main.css";
-import "@fontsource-variable/public-sans";
+//Fonts
+import "@fontsource-variable/tourney";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 import EarthMapearthmap1k from "../images/earthmap1k.jpg";
 import EarthClouds from "../images/2k_earth_clouds.jpg";
@@ -224,7 +229,7 @@ const addPlanetClickListener = (planet) => {
   });
 };
 
-addPlanetClickListener("sun");
+// addPlanetClickListener("sun");
 addPlanetClickListener("earth");
 addPlanetClickListener("venus");
 addPlanetClickListener("mercury");
