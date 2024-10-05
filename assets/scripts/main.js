@@ -15,10 +15,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from "three";
 import { animate, createElementDiv, createOrbit, fetcher } from "./utils";
 
-const orbits = await fetcher("https://cosmicview-back.onrender.com/orbits/", {
+const orbitsData = await fetcher("https://cosmicview-back.onrender.com/all", {
   method: "GET",
 });
-console.log("orbits=>", orbits.planets);
 
 const container = document.querySelector("#app");
 const localEarth = EarthMapearthmap1k;
@@ -27,7 +26,7 @@ const localMoon = Moon;
 const texture = new THREE.TextureLoader().load(localEarth);
 const texture_clouds = new THREE.TextureLoader().load(localCloud);
 const texture_moon = new THREE.TextureLoader().load(localMoon);
-
+const axesHelper = new THREE.AxesHelper(3);
 const localSunTexture = Sun;
 const localSunClouds = SunClouds;
 const localMercuryTexture = Mercury;
@@ -41,6 +40,15 @@ const venusClouds = new THREE.TextureLoader().load(localVenusClouds);
 
 //Scene
 const scene = new THREE.Scene();
+// choosing colors
+const xColor = new THREE.Color(0xff00ff);
+const yColor = new THREE.Color(0xffff00);
+const zColor = new THREE.Color(0x00ffff);
+
+// setting colors
+axesHelper.setColors(xColor, yColor, zColor);
+
+scene.add(axesHelper);
 scene.background = new THREE.Color("black");
 
 const width = window.innerWidth;
@@ -48,7 +56,6 @@ const height = window.innerHeight;
 
 // Objects
 // Sun
-console.log("sunTexture=>", sunTexture);
 const sunGeometry = new THREE.SphereGeometry(100, 128, 128);
 const sunMaterial = new THREE.MeshBasicMaterial({
   map: sunTexture,
@@ -143,21 +150,15 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 const clock = new THREE.Clock();
 
-const paintOrbit = (radio, affectY = true) => {
-  const segments = 64;
-  const points = [];
-
-  for (let i = 0; i <= segments; i++) {
-    const theta = (i / segments) * Math.PI * 2;
-    const posY = Math.sin(theta) * (radio / 3);
+const paintOrbit = (points) => {
+  console.log("points=>", typeof points);
+  console.log("points array=>", points);
+  points.forEach((point) => {
+    console.log("test=>", point);
     points.push(
-      new THREE.Vector3(
-        Math.sin(theta) * radio,
-        affectY ? posY : 0,
-        Math.cos(theta) * radio
-      )
+      new THREE.Vector3(point.x / 1000000, point.y / 1000000, point.z / 1000000)
     );
-  }
+  });
 
   const radioGeom = new THREE.BufferGeometry().setFromPoints(points);
   const radioMat = new THREE.LineBasicMaterial({ color: 0xffffff });
@@ -166,25 +167,33 @@ const paintOrbit = (radio, affectY = true) => {
 const moonOrbitRadius = 25;
 const moonOrbitSpeed = 0.06;
 
-const moonOrbit = paintOrbit(moonOrbitRadius);
-const earthOrbit = paintOrbit(1000, false);
-const mercuryOrbit = paintOrbit(333, false);
-const venusOrbit = paintOrbit(500, false);
+orbitsData.planets.forEach((planet) => {
+  console.log("orbitsss=>", planet.orbit);
+  const orbits = paintOrbit(planet.orbit);
+  const earthGroup = new THREE.Group();
+  earthGroup.add(planetEarth);
+  scene.add(orbits);
+});
 
-const earthGroup = new THREE.Group();
-earthGroup.add(moonOrbit);
-earthGroup.add(planetEarth);
-earthGroup.add(clouds);
-earthGroup.add(moon);
+// const moonOrbit = paintOrbit(moonOrbitRadius);
+// const earthOrbit = paintOrbit(1000, false);
+// const mercuryOrbit = paintOrbit(333, false);
+// const venusOrbit = paintOrbit(500, false);
 
-scene.add(earthGroup);
-scene.add(earthOrbit);
+// const earthGroup = new THREE.Group();
+// // earthGroup.add(moonOrbit);
+// earthGroup.add(planetEarth);
+// earthGroup.add(clouds);
+// earthGroup.add(moon);
+
+// scene.add(earthGroup);
+// scene.add(earthOrbit);
 scene.add(sunMesh);
 scene.add(sunCloudsObject);
 scene.add(planetMercury);
-scene.add(mercuryOrbit);
+// scene.add(mercuryOrbit);
 scene.add(planetVenus);
-scene.add(venusOrbit);
+// scene.add(venusOrbit);
 scene.add(venusCloudsMesh);
 
 const orbitControl = new OrbitControls(camera, renderer.domElement);
@@ -237,7 +246,7 @@ const loop = () => {
   planetMercury.rotation.y += delta * 0.3;
   planetVenus.rotation.y += delta * 0.3;
   //moon.rotation.y += delta * 0.3;
-  orbitMovement(elapsedTime * 0.01, 1000, earthGroup);
+  // orbitMovement(elapsedTime * 0.01, 1000, earthGroup);
   orbitMovement(elapsedTime * 0.005, 333, planetMercury);
   orbitMovement(elapsedTime * 0.012, 500, planetVenus);
   orbitMovement(elapsedTime * 0.012, 500, venusCloudsMesh);
