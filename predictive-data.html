@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cosmic Touch</title>
+  </head>
+  <body>
+    <header
+      class="header px-4 !grid !grid-cols-3 lg:px-6 py-4 h-full max-h-[100px]"
+    >
+      <div class="lg:tooltip tooltip-bottom mr-auto" data-tip="Return">
+        <a href="/" class="btn btn-ghost mr-2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.7312 20.3312C10.4311 20.6312 10.0242 20.7997 9.59995 20.7997C9.17569 20.7997 8.7688 20.6312 8.46875 20.3312L1.26875 13.1312C0.968797 12.8312 0.800293 12.4243 0.800293 12C0.800293 11.5757 0.968797 11.1688 1.26875 10.8688L8.46875 3.6688C8.77051 3.37735 9.17468 3.21608 9.59419 3.21972C10.0137 3.22337 10.415 3.39164 10.7117 3.68829C11.0083 3.98494 11.1766 4.38625 11.1802 4.80576C11.1839 5.22527 11.0226 5.62944 10.7312 5.9312L6.39995 10.4H21.6C22.0243 10.4 22.4313 10.5686 22.7313 10.8686C23.0314 11.1687 23.2 11.5757 23.2 12C23.2 12.4243 23.0314 12.8313 22.7313 13.1314C22.4313 13.4314 22.0243 13.6 21.6 13.6H6.39995L10.7312 18.0688C11.0311 18.3688 11.1996 18.7757 11.1996 19.2C11.1996 19.6243 11.0311 20.0312 10.7312 20.3312Z"
+              fill="#FAFAFA"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <h1 class="!font-sans text-base lg:text-4xl text-center">Cosmic Touch</h1>
+
+      <div class="dropdown dropdown-end w-fit ml-auto">
+        <div class="lg:tooltip tooltip-left" data-tip="Menu">
+          <button tabindex="0" role="button" class="btn btn-ghost">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.5 7H24.5V9.33333H3.5V7ZM3.5 12.8333H24.5V15.1667H3.5V12.8333ZM3.5 18.6667H24.5V21H3.5V18.6667Z"
+                fill="#FAFAFA"
+              />
+            </svg>
+          </button>
+        </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content rounded-box menu bg-base-200 z-[1] w-52 p-2 shadow"
+        >
+          <li>
+            <a href="/missions.html" class="flex gap-2 items-center">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 21.5V15.575C4 15.2416 4.07933 14.925 4.238 14.625C4.39667 14.325 4.61733 14.0833 4.9 13.9L6 13.175C6.11667 14.575 6.3 15.7666 6.55 16.75C6.8 17.7333 7.19167 18.825 7.725 20.025L4 21.5ZM9.225 19.5C8.64167 18.4 8.20833 17.2333 7.925 16C7.64167 14.7666 7.5 13.4916 7.5 12.175C7.5 10.0916 7.91267 8.12931 8.738 6.28798C9.56333 4.44664 10.6507 3.05064 12 2.09998C13.35 3.04998 14.4377 4.44598 15.263 6.28798C16.0883 8.12998 16.5007 10.0923 16.5 12.175C16.5 13.475 16.3583 14.7376 16.075 15.963C15.7917 17.1883 15.3583 18.3673 14.775 19.5H9.225ZM12 12.5C12.55 12.5 13.021 12.3043 13.413 11.913C13.805 11.5216 14.0007 11.0506 14 10.5C13.9993 9.94931 13.8037 9.47864 13.413 9.08798C13.0223 8.69731 12.5513 8.50131 12 8.49998C11.4487 8.49864 10.978 8.69464 10.588 9.08798C10.198 9.48131 10.002 9.95198 10 10.5C9.998 11.048 10.194 11.519 10.588 11.913C10.982 12.307 11.4527 12.5026 12 12.5ZM20 21.5L16.275 20.025C16.8083 18.825 17.2 17.7333 17.45 16.75C17.7 15.7666 17.8833 14.575 18 13.175L19.1 13.9C19.3833 14.0833 19.6043 14.325 19.763 14.625C19.9217 14.925 20.0007 15.2416 20 15.575V21.5Z"
+                  fill="#969696"
+                />
+              </svg>
+              Missions
+            </a>
+          </li>
+          <li>
+            <a href="/predictive-data.html">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 21.5V15.575C4 15.2416 4.07933 14.925 4.238 14.625C4.39667 14.325 4.61733 14.0833 4.9 13.9L6 13.175C6.11667 14.575 6.3 15.7666 6.55 16.75C6.8 17.7333 7.19167 18.825 7.725 20.025L4 21.5ZM9.225 19.5C8.64167 18.4 8.20833 17.2333 7.925 16C7.64167 14.7666 7.5 13.4916 7.5 12.175C7.5 10.0916 7.91267 8.12931 8.738 6.28798C9.56333 4.44664 10.6507 3.05064 12 2.09998C13.35 3.04998 14.4377 4.44598 15.263 6.28798C16.0883 8.12998 16.5007 10.0923 16.5 12.175C16.5 13.475 16.3583 14.7376 16.075 15.963C15.7917 17.1883 15.3583 18.3673 14.775 19.5H9.225ZM12 12.5C12.55 12.5 13.021 12.3043 13.413 11.913C13.805 11.5216 14.0007 11.0506 14 10.5C13.9993 9.94931 13.8037 9.47864 13.413 9.08798C13.0223 8.69731 12.5513 8.50131 12 8.49998C11.4487 8.49864 10.978 8.69464 10.588 9.08798C10.198 9.48131 10.002 9.95198 10 10.5C9.998 11.048 10.194 11.519 10.588 11.913C10.982 12.307 11.4527 12.5026 12 12.5ZM20 21.5L16.275 20.025C16.8083 18.825 17.2 17.7333 17.45 16.75C17.7 15.7666 17.8833 14.575 18 13.175L19.1 13.9C19.3833 14.0833 19.6043 14.325 19.763 14.625C19.9217 14.925 20.0007 15.2416 20 15.575V21.5Z"
+                  fill="#969696"
+                />
+              </svg>
+              Predictive data</a
+            >
+          </li>
+          <li>
+            <a href="/predictive-data.html">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 7H13V9H11V7ZM11 11H13V17H11V11ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+                  fill="#969696"
+                />
+              </svg>
+              Info
+            </a>
+          </li>
+          <li>
+            <a href="/predictive-data.html">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                  fill="#969696"
+                />
+                <path
+                  d="M23.2049 11.745C22.3228 9.46324 20.7914 7.48996 18.8 6.06906C16.8086 4.64817 14.4445 3.84193 11.9999 3.75C9.55531 3.84193 7.19122 4.64817 5.19983 6.06906C3.20844 7.48996 1.67705 9.46324 0.794925 11.745C0.73535 11.9098 0.73535 12.0902 0.794925 12.255C1.67705 14.5368 3.20844 16.51 5.19983 17.9309C7.19122 19.3518 9.55531 20.1581 11.9999 20.25C14.4445 20.1581 16.8086 19.3518 18.8 17.9309C20.7914 16.51 22.3228 14.5368 23.2049 12.255C23.2645 12.0902 23.2645 11.9098 23.2049 11.745ZM11.9999 16.875C11.0357 16.875 10.0932 16.5891 9.29152 16.0534C8.48983 15.5177 7.86499 14.7564 7.49601 13.8656C7.12704 12.9748 7.03049 11.9946 7.2186 11.0489C7.4067 10.1033 7.871 9.23464 8.55278 8.55285C9.23456 7.87107 10.1032 7.40677 11.0489 7.21867C11.9945 7.03057 12.9747 7.12711 13.8655 7.49609C14.7563 7.86506 15.5177 8.48991 16.0533 9.2916C16.589 10.0933 16.8749 11.0358 16.8749 12C16.8729 13.2923 16.3587 14.5311 15.4449 15.445C14.5311 16.3588 13.2922 16.873 11.9999 16.875Z"
+                  fill="#969696"
+                />
+              </svg>
+              View
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <img
+        class="h-dvh w-dvw"
+        src="/assets/images/background.png"
+        decoding="async"
+        loading="eager"
+      />
+      <div class="left-6 z-10 absolute top-32 max-w-[327px]">
+        <div class="collapse collapse-arrow bg-base-200/50 backdrop-blur-lg">
+          <input type="radio" name="my-accordion-2" />
+          <div class="collapse-title text-sm font-medium">Earth</div>
+          <div class="collapse-content">
+            <p class="text-3xl font-sans font-bold mb-3">Earth</p>
+            <p class="text-sm">
+              Earth is the third planet from the Sun in our solar system and the
+              only one known to support life. Often called the "Blue Planet" due
+              to its vast oceans of liquid water, Earth has an atmosphere
+              primarily composed of nitrogen and oxygen, essential for
+              sustaining life as we know it. Its surface is diverse, featuring
+              continents, oceans, and a variety of ecosystems, making it a
+              unique world within our solar system.
+            </p>
+          </div>
+        </div>
+        <div class="collapse collapse-arrow bg-base-200/50 backdrop-blur-lg">
+          <input type="radio" name="my-accordion-2" />
+          <div class="collapse-title text-sm font-medium">Missions</div>
+          <div class="collapse-content grid gap-5">
+            <p class="text-3xl font-sans font-bold">Missions</p>
+            <ol class="list-decimal pl-6 text-sm grid gap-2">
+              <li>Planet Comparison</li>
+              <li>Ecosystems and Biodiversity</li>
+              <li>Rotation and Revolution Simulation</li>
+              <li>Develop a Presentation or Model</li>
+            </ol>
+            <button class="btn btn-primary">Play</button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute w-fit lg:w-fit top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+      >
+        <div class="w-fit relative lg:w-[758px] lg:h-[758px] flex">
+          <img
+            class="lg:aspect-auto w-[250px] lg:w-full object-cover h-[250px] lg:h-full"
+            src="/assets/images/earth-mission.png"
+            decoding="async"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="absolute top-1 right-1 lg:top-24 lg:right-16">
+          <img
+            class="aspect-auto"
+            src="/assets/images/moon-mission.png"
+            decoding="async"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/assets/scripts/main.js"></script>
+  </body>
+</html>
