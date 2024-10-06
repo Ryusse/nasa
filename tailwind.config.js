@@ -18,8 +18,8 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#ffffff",
-          "primary-content": "#171717",
+          primary: "#3F4796",
+          "primary-content": "#ffffff",
           secondary: "#FFC358",
           "secondary-content": "#160E03",
           accent: "#22D3EE",
@@ -27,7 +27,7 @@ export default {
           neutral: "#040404",
           "neutral-content": "#c4c4c4",
           "base-100": "#000000",
-          "base-200": "#1f1f1f",
+          "base-200": "#141414",
           "base-300": "#969696",
           "base-content": "#ffffff",
           info: "#00a6ff",
