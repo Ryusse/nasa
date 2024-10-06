@@ -20,8 +20,8 @@ export default defineConfig({
       input: {
         //Html
         index: path.resolve(__dirname, "index.html"),
-        servicios: path.resolve(__dirname, "missions.html"),
-        servicios: path.resolve(__dirname, "predictive-data.html"),
+        missions: path.resolve(__dirname, "missions.html"),
+        "predictive-data": path.resolve(__dirname, "predictive-data.html"),
       },
 
       output: {
