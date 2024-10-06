@@ -1,11 +1,14 @@
-import EarthMapearthmap1k from "../images/earthmap1k.jpg";
-import EarthClouds from "../images/2k_earth_clouds.jpg";
-import Moon from "../images/2k_moon.jpg";
-import Sun from "../images/Map_of_the_full_sun.jpg";
-import SunClouds from "../images/sun2.jpg";
-import Mercury from "../images/mercury.jpg";
-import Venus from "../images/venus.jpg";
-import VenusClouds from "../images/venusClouds.jpg";
+import Moon from "../images/textures/2k_moon.jpg";
+import Sun from "../images/textures/Map_of_the_full_sun.jpg";
+import SunClouds from "../images/textures/sun2.jpg";
+import Mercury from "../images/textures/mercury.jpg";
+import Venus from "../images/textures/venus.jpg";
+import EarthMapearthmap1k from "../images/textures/earthmap1k.jpg";
+import Mars from "../images/textures/marte.jpg";
+import Jupiter from "../images/textures/jupiter.jpg";
+import Saturn from "../images/textures/saturno.jpeg";
+import Netpune from "../images/textures/neptuno.jpg";
+import Uranus from "../images/textures/urano.jpg";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -13,297 +16,278 @@ import * as THREE from "three";
 import { fetcher } from "./utils";
 
 (async () => {
-  const orbitsData = await fetcher(
-    "https://cosmicview-back.onrender.com/all/",
-    {
-      method: "GET",
-      mode: "no-cors",
-    }
-  );
-  const container = document.querySelector("#app");
-  const localEarth = EarthMapearthmap1k;
-  const localCloud = EarthClouds;
-  const localMoon = Moon;
-  const texture = new THREE.TextureLoader().load(localEarth);
-  const texture_clouds = new THREE.TextureLoader().load(localCloud);
-  const texture_moon = new THREE.TextureLoader().load(localMoon);
-  const axesHelper = new THREE.AxesHelper(3);
-  const localSunTexture = Sun;
-  const localSunClouds = SunClouds;
-  const localMercuryTexture = Mercury;
-  const localVenusTexture = Venus;
-  const localVenusClouds = VenusClouds;
-  const sunTexture = new THREE.TextureLoader().load(localSunClouds);
-  const sunClouds = new THREE.TextureLoader().load(localSunTexture);
-  const mercuryTexture = new THREE.TextureLoader().load(localMercuryTexture);
-  const venusTexture = new THREE.TextureLoader().load(localVenusTexture);
-  const venusClouds = new THREE.TextureLoader().load(localVenusClouds);
+	const orbitsData = await fetcher(
+		"https://cosmicview-back.onrender.com/all/",
+		{
+			method: "GET",
+		}
+	);
+	const container = document.querySelector("#app");
+	const axesHelper = new THREE.AxesHelper(3);
+	const localSunTexture = Sun;
+	const localSunClouds = SunClouds;
+	const localEarth = EarthMapearthmap1k;
+	const localNeptune = Netpune;
+	const localJupiter = Jupiter;
+	const localMercury= Mercury;
+	const localMoon = Moon;
+	const localVenus = Venus;
+	const localSaturn = Saturn;
+	const localMars = Mars;
+	const localUranus = Uranus;
+	const earthTexture = new THREE.TextureLoader().load(localEarth);
+	const jupiterTexture = new THREE.TextureLoader().load(localJupiter);
+	const texture_moon = new THREE.TextureLoader().load(localMoon);
+	const sunTexture = new THREE.TextureLoader().load(localSunClouds);
+	const sunClouds = new THREE.TextureLoader().load(localSunTexture);
+	const mercuryTexture = new THREE.TextureLoader().load(localMercury);
+	const venusTexture = new THREE.TextureLoader().load(localVenus);
+	const neptuneTexture = new THREE.TextureLoader().load(localNeptune);
+	const saturnTexture = new THREE.TextureLoader().load(localSaturn);
+	const marsTexture = new THREE.TextureLoader().load(localMars);
+	const uranusTexture = new THREE.TextureLoader().load(localUranus);
 
-  //Scene
-  const scene = new THREE.Scene();
-  // choosing colors
-  const xColor = new THREE.Color(0xff00ff);
-  const yColor = new THREE.Color(0xffff00);
-  const zColor = new THREE.Color(0x00ffff);
+	//Scene
+	const scene = new THREE.Scene();
+	// choosing colors
+	const xColor = new THREE.Color(0xff00ff);
+	const yColor = new THREE.Color(0xffff00);
+	const zColor = new THREE.Color(0x00ffff);
 
-  // setting colors
-  axesHelper.setColors(xColor, yColor, zColor);
+	// setting colors
+	axesHelper.setColors(xColor, yColor, zColor);
 
-  scene.add(axesHelper);
-  scene.background = new THREE.Color("black");
+	scene.add(axesHelper);
+	scene.background = new THREE.Color("black");
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+	const width = window.innerWidth;
+	const height = window.innerHeight;
 
-  // Objects
-  // Sun
-  const sunGeometry = new THREE.SphereGeometry(100, 128, 128);
-  const sunMaterial = new THREE.MeshBasicMaterial({
-    map: sunTexture,
-  });
-  const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
+	// Objects
+	// Sun
+	const sunGeometry = new THREE.SphereGeometry(36, 128, 128);
+	const sunMaterial = new THREE.MeshBasicMaterial({
+		map: sunTexture,
+	});
+	const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
 
-  //LIGHTS
-  const pointLight = new THREE.PointLight(0xffffff, 1.5);
-  pointLight.position.copy(sunMesh.position);
-  pointLight.castShadow = true;
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+	//LIGHTS
+	const pointLight = new THREE.PointLight(0xffffff, 1.5);
+	pointLight.position.copy(sunMesh.position);
+	pointLight.castShadow = true;
+	const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
 
-  scene.add(pointLight);
-  scene.add(ambientLight);
+	scene.add(pointLight);
+	scene.add(ambientLight);
 
-  // Sun Clouds
-  const sunCloudGeometry = new THREE.SphereGeometry(100.25, 128, 128);
-  const sunCloudMaterial = new THREE.MeshLambertMaterial({
-    color: "yelow",
-    alphaMap: sunClouds,
-  });
-  sunCloudMaterial.transparent = true;
-  const sunCloudsObject = new THREE.Mesh(sunCloudGeometry, sunCloudMaterial);
+	// Sun Clouds
+	const sunCloudGeometry = new THREE.SphereGeometry(20.25, 128, 128);
+	const sunCloudMaterial = new THREE.MeshLambertMaterial({
+		color: "yelow",
+		alphaMap: sunClouds,
+	});
+	sunCloudMaterial.transparent = true;
+	const sunCloudsObject = new THREE.Mesh(sunCloudGeometry, sunCloudMaterial);
 
-  //Mercury
-  const mercuryGeometry = new THREE.SphereGeometry(8, 100, 100);
-  const planetMercuryMaterial = new THREE.MeshPhongMaterial({
-    map: mercuryTexture,
-  });
-  const planetMercury = new THREE.Mesh(mercuryGeometry, planetMercuryMaterial);
+	//Camera
+	const camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 10000);
+	camera.position.z = 2000;
+	camera.position.y = 500;
 
-  //Venus
-  const venusGeometry = new THREE.SphereGeometry(10, 128, 128);
-  const planetVenusMaterial = new THREE.MeshPhongMaterial({
-    map: venusTexture,
-  });
-  const planetVenus = new THREE.Mesh(venusGeometry, planetVenusMaterial);
+	const defaultCamera = camera.clone();
 
-  //VenusClouds
-  const venusCloudGeometry = new THREE.SphereGeometry(10.5, 128, 128);
-  const venusCloudMaterial = new THREE.MeshLambertMaterial({
-    map: venusClouds,
-    opacity: 0.76,
-  });
-  venusCloudMaterial.transparent = true;
-  const venusCloudsMesh = new THREE.Mesh(
-    venusCloudGeometry,
-    venusCloudMaterial
-  );
+	//SHADOWS
+	// dirLight.castShadow = true;
+	camera.position.y = 0;
 
-  //Earth
-  const sphereGeometry = new THREE.SphereGeometry(10, 128, 128);
-  const planetEarthMaterial = new THREE.MeshPhongMaterial({ map: texture });
-  const planetEarth = new THREE.Mesh(sphereGeometry, planetEarthMaterial);
-  planetEarth.rotation.x = (23 / 180) * Math.PI;
+	//Renderer
+	const renderer = new THREE.WebGLRenderer();
+	container.appendChild(renderer.domElement);
+	renderer.shadowMap.enabled = true;
+	renderer.setSize(width, height);
+	renderer.setPixelRatio(window.devicePixelRatio);
 
-  //Clouds
-  const cloudGeometry = new THREE.SphereGeometry(10.5, 128, 128);
-  const cloudMaterial = new THREE.MeshLambertMaterial({
-    color: "white",
-    alphaMap: texture_clouds,
-  });
+	const clock = new THREE.Clock();
 
-  cloudMaterial.transparent = true;
-  const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+	const paintOrbit = (points) => {
+		points.forEach((point) => {
+			points.push(
+				new THREE.Vector3(
+					point.x / 1000000,
+					point.y / 1000000,
+					point.z / 1000000
+				)
+			);
+		});
 
-  //Camera
-  const camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 10000);
-  camera.position.z = 2000;
-  camera.position.y = 500;
+		const radioGeom = new THREE.BufferGeometry().setFromPoints(points);
+		const radioMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+		return new THREE.Line(radioGeom, radioMat);
+	};
 
-  const defaultCamera = camera.clone();
+	orbitsData.planets.forEach((planet) => {
+		const orbits = paintOrbit(planet.orbit);
+		scene.add(orbits);
+		const planetGeometry = new THREE.SphereGeometry(planet.radius * 2);
+		let planetMaterial;
+		switch (planet.name) {
+			case "Mercury":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: mercuryTexture,
+				});
+				break;
 
-  const moonGeo = new THREE.SphereGeometry(2.7, 128, 128);
-  const moonMat = new THREE.MeshLambertMaterial({
-    color: "white",
-    map: texture_moon,
-  });
-  const moon = new THREE.Mesh(moonGeo, moonMat);
-  moon.position.copy(planetEarth.position);
+			case "Venus":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: venusTexture,
+				});
+				break;
 
-  //SHADOWS
-  moon.castShadow = true;
-  planetEarth.receiveShadow = true;
-  clouds.castShadow = true;
-  // dirLight.castShadow = true;
-  camera.position.y = 0;
+			case "Earth":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: earthTexture,
+				});
+				break;
 
-  //Renderer
-  const renderer = new THREE.WebGLRenderer();
-  container.appendChild(renderer.domElement);
-  renderer.shadowMap.enabled = true;
-  renderer.setSize(width, height);
-  renderer.setPixelRatio(window.devicePixelRatio);
+			case "Mars":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: marsTexture,
+				});
+				break;
 
-  const clock = new THREE.Clock();
+			case "Jupiter":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: jupiterTexture,
+				});
+				break;
 
-  const paintOrbit = (points) => {
-    console.log("points=>", typeof points);
-    console.log("points array=>", points);
-    points.forEach((point) => {
-      console.log("test=>", point);
-      points.push(
-        new THREE.Vector3(
-          point.x / 1000000,
-          point.y / 1000000,
-          point.z / 1000000
-        )
-      );
-    });
+			case "Neptune":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: neptuneTexture,
+				});
+				break;
 
-    const radioGeom = new THREE.BufferGeometry().setFromPoints(points);
-    const radioMat = new THREE.LineBasicMaterial({ color: 0xffffff });
-    return new THREE.Line(radioGeom, radioMat);
-  };
-  const moonOrbitRadius = 25;
-  const moonOrbitSpeed = 0.06;
+			case "Saturn":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: saturnTexture,
+				});
+				break;
 
-  orbitsData.planets.forEach((planet) => {
-    console.log("orbitsss=>", planet.orbit);
-    const orbits = paintOrbit(planet.orbit);
-    const earthGroup = new THREE.Group();
-    earthGroup.add(planetEarth);
-    scene.add(orbits);
-  });
+			case "Uranus":
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: uranusTexture,
+				});
+				break;
 
-  // const moonOrbit = paintOrbit(moonOrbitRadius);
-  // const earthOrbit = paintOrbit(1000, false);
-  // const mercuryOrbit = paintOrbit(333, false);
-  // const venusOrbit = paintOrbit(500, false);
+			default:
+				planetMaterial = new THREE.MeshPhongMaterial({
+					map: venusTexture,
+				});
+				break;
+		}
+		const newplanet = new THREE.Mesh(planetGeometry, planetMaterial);
+		newplanet.position.x = planet.position[0];
+		newplanet.position.y = planet.position[1];
+		newplanet.position.z = planet.position[2];
+		newplanet.receiveShadow = true;
+		scene.add(newplanet);
+	});
 
-  // const earthGroup = new THREE.Group();
-  // // earthGroup.add(moonOrbit);
-  // earthGroup.add(planetEarth);
-  // earthGroup.add(clouds);
-  // earthGroup.add(moon);
+	scene.add(sunMesh);
+	scene.add(sunCloudsObject);
 
-  // scene.add(earthGroup);
-  // scene.add(earthOrbit);
-  scene.add(sunMesh);
-  scene.add(sunCloudsObject);
-  scene.add(planetMercury);
-  // scene.add(mercuryOrbit);
-  scene.add(planetVenus);
-  // scene.add(venusOrbit);
-  scene.add(venusCloudsMesh);
+	const orbitControl = new OrbitControls(camera, renderer.domElement);
 
-  const orbitControl = new OrbitControls(camera, renderer.domElement);
+	//Events
+	let target;
+	let startAnim = false;
 
-  //Events
-  let target;
-  let startAnim = false;
+	const getPlanetZoomIn = (planet, reset = false) => {
+		return {
+			target: planet.position.clone(),
+			targetSize: new THREE.Box3()
+				.setFromObject(planet)
+				.getSize(new THREE.Vector3()),
+			cameraLookat: reset ? scene.position : planet.position,
+		};
+	};
 
-  const getPlanetZoomIn = (planet, reset = false) => {
-    return {
-      target: planet.position.clone(),
-      targetSize: new THREE.Box3()
-        .setFromObject(planet)
-        .getSize(new THREE.Vector3()),
-      cameraLookat: reset ? scene.position : planet.position,
-    };
-  };
+	document.getElementById("reset").addEventListener("click", () => {
+		target = null;
+		startAnim = true;
+	});
 
-  document.getElementById("reset").addEventListener("click", () => {
-    target = null;
-    startAnim = true;
-  });
+	const addPlanetClickListener = (planet) => {
+		document.getElementById(planet).addEventListener("click", () => {
+			target = planet;
+			startAnim = true;
+		});
+	};
 
-  const addPlanetClickListener = (planet) => {
-    document.getElementById(planet).addEventListener("click", () => {
-      target = planet;
-      startAnim = true;
-    });
-  };
+	// addPlanetClickListener("sun");
+	addPlanetClickListener("earth");
+	addPlanetClickListener("venus");
+	addPlanetClickListener("mercury");
 
-  // addPlanetClickListener("sun");
-  addPlanetClickListener("earth");
-  addPlanetClickListener("venus");
-  addPlanetClickListener("mercury");
+	const orbitMovement = (theta, radius, mesh, affectY = false) => {
+		mesh.position.x = Math.sin(theta) * radius;
+		mesh.position.y = affectY ? Math.sin(theta) * (radius / 3) : 0;
+		mesh.position.z = Math.cos(theta) * radius;
+	};
+	//LOOP
+	const loop = () => {
+		const delta = clock.getDelta();
+		const elapsedTime = clock.getElapsedTime();
+		sunMesh.rotation.y += delta * 0.03;
+		sunCloudsObject.rotation.y += delta * 0.03;
 
-  const orbitMovement = (theta, radius, mesh, affectY = false) => {
-    mesh.position.x = Math.sin(theta) * radius;
-    mesh.position.y = affectY ? Math.sin(theta) * (radius / 3) : 0;
-    mesh.position.z = Math.cos(theta) * radius;
-  };
-  //LOOP
-  const loop = () => {
-    const delta = clock.getDelta();
-    const elapsedTime = clock.getElapsedTime();
-    clouds.rotation.y += delta * 0.03;
-    venusCloudsMesh.rotation.y += delta * 0.03;
-    planetEarth.rotation.y += delta * 0.2;
-    sunMesh.rotation.y += delta * 0.03;
-    sunCloudsObject.rotation.y += delta * 0.03;
-    planetMercury.rotation.y += delta * 0.3;
-    planetVenus.rotation.y += delta * 0.3;
-    //moon.rotation.y += delta * 0.3;
-    // orbitMovement(elapsedTime * 0.01, 1000, earthGroup);
-    orbitMovement(elapsedTime * 0.005, 333, planetMercury);
-    orbitMovement(elapsedTime * 0.012, 500, planetVenus);
-    orbitMovement(elapsedTime * 0.012, 500, venusCloudsMesh);
-    orbitMovement(elapsedTime * moonOrbitSpeed, moonOrbitRadius, moon, true);
+		//moon.rotation.y += delta * 0.3;
+		// orbitMovement(elapsedTime * 0.01, 1000, earthGroup);
 
-    // camera animation
+		// camera animation
 
-    if (startAnim) {
-      let data;
+		if (startAnim) {
+			let data;
 
-      switch (target) {
-        case "sun":
-          data = getPlanetZoomIn(sunMesh);
-          break;
-        case "earth":
-          data = getPlanetZoomIn(earthGroup);
-          break;
-        case "venus":
-          data = getPlanetZoomIn(planetVenus);
-          break;
-        case "mercury":
-          data = getPlanetZoomIn(planetMercury);
-          break;
-        default: {
-          data = {
-            target: defaultCamera.position.clone(),
-            targetSize: new THREE.Vector3(),
-            cameraLookat: new THREE.Vector3(),
-          };
-          break;
-        }
-      }
+			switch (target) {
+				case "sun":
+					data = getPlanetZoomIn(sunMesh);
+					break;
+				case "earth":
+					data = getPlanetZoomIn(earthGroup);
+					break;
+				case "venus":
+					data = getPlanetZoomIn(planetVenus);
+					break;
+				case "mercury":
+					data = getPlanetZoomIn(planetMercury);
+					break;
+				default: {
+					data = {
+						target: defaultCamera.position.clone(),
+						targetSize: new THREE.Vector3(),
+						cameraLookat: new THREE.Vector3(),
+					};
+					break;
+				}
+			}
 
-      const distancedTarget = data.target;
-      distancedTarget.z += data.targetSize.z;
-      orbitControl.target.copy(data.cameraLookat);
-      orbitControl.update();
-      orbitControl.enabled = false;
-      camera.position.lerp(distancedTarget, delta);
+			const distancedTarget = data.target;
+			distancedTarget.z += data.targetSize.z;
+			orbitControl.target.copy(data.cameraLookat);
+			orbitControl.update();
+			orbitControl.enabled = false;
+			camera.position.lerp(distancedTarget, delta);
 
-      if (camera.position.distanceTo(distancedTarget) < 10) {
-        orbitControl.enabled = true;
-        startAnim = false;
-      }
-    }
+			if (camera.position.distanceTo(distancedTarget) < 10) {
+				orbitControl.enabled = true;
+				startAnim = false;
+			}
+		}
 
-    renderer.render(scene, camera);
-    window.requestAnimationFrame(loop);
-  };
+		renderer.render(scene, camera);
+		window.requestAnimationFrame(loop);
+	};
 
   loop();
 })();
