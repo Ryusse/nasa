@@ -4,53 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .btn {
-  display: flex;
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: 0.2rem;
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
-}
-
-.btn-primary  {
-  color: hsl(var(--primary-content));
-  background-color: hsl(var(--primary-color));
-}
-
-.alert {
-  display: block;
-  margin-block: 2rem;
-  padding-inline: 2rem;
-  padding-block: 1.5rem;
-  background-color: var(--error);
-  color: var(--error-content);
-  border-radius: 0.2rem;
-  font-weight: 600;
-  font-size: 1.1rem;
+   @apply rounded-full;
 }
 
 .header {
   min-width: 100%;
   width: 100%;
-  display: grid;
   position: absolute;
   top: 0;
   left: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 50%, rgba(87, 87, 87, 0.00) 87.93%);
-  display: grid;
-  grid-template-columns: 300px 1fr 300px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-inline: 2rem;
-  padding-block: 1rem;
-}
-
-.header__title {
-  font-weight: 700;
-  font-size: 2.2rem;
-  font-family: var(--font-family-tourney);
 }
 
 .filters {
