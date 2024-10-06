@@ -72,6 +72,8 @@ button {
 }
 
 .filters {
+  border-top: 2px solid hsl(var(--base-300));
+  box-shadow: 0px -4px 100px 0px var(--Color-Amarillo-Amarillo, #000);
   overflow-x: auto;
   width: 100%;
   left: 0;
