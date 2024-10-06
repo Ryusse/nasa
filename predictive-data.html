@@ -77,7 +77,15 @@
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M4 21.5V15.575C4 15.2416 4.07933 14.925 4.238 14.625C4.39667 14.325 4.61733 14.0833 4.9 13.9L6 13.175C6.11667 14.575 6.3 15.7666 6.55 16.75C6.8 17.7333 7.19167 18.825 7.725 20.025L4 21.5ZM9.225 19.5C8.64167 18.4 8.20833 17.2333 7.925 16C7.64167 14.7666 7.5 13.4916 7.5 12.175C7.5 10.0916 7.91267 8.12931 8.738 6.28798C9.56333 4.44664 10.6507 3.05064 12 2.09998C13.35 3.04998 14.4377 4.44598 15.263 6.28798C16.0883 8.12998 16.5007 10.0923 16.5 12.175C16.5 13.475 16.3583 14.7376 16.075 15.963C15.7917 17.1883 15.3583 18.3673 14.775 19.5H9.225ZM12 12.5C12.55 12.5 13.021 12.3043 13.413 11.913C13.805 11.5216 14.0007 11.0506 14 10.5C13.9993 9.94931 13.8037 9.47864 13.413 9.08798C13.0223 8.69731 12.5513 8.50131 12 8.49998C11.4487 8.49864 10.978 8.69464 10.588 9.08798C10.198 9.48131 10.002 9.95198 10 10.5C9.998 11.048 10.194 11.519 10.588 11.913C10.982 12.307 11.4527 12.5026 12 12.5ZM20 21.5L16.275 20.025C16.8083 18.825 17.2 17.7333 17.45 16.75C17.7 15.7666 17.8833 14.575 18 13.175L19.1 13.9C19.3833 14.0833 19.6043 14.325 19.763 14.625C19.9217 14.925 20.0007 15.2416 20 15.575V21.5Z"
+                  d="M19 3H18C16.8954 3 16 3.89543 16 5V19C16 20.1046 16.8954 21 18 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+                  fill="#969696"
+                />
+                <path
+                  d="M12.5 9H11.5C10.3954 9 9.5 9.89543 9.5 11V19C9.5 20.1046 10.3954 21 11.5 21H12.5C13.6046 21 14.5 20.1046 14.5 19V11C14.5 9.89543 13.6046 9 12.5 9Z"
+                  fill="#969696"
+                />
+                <path
+                  d="M6 16H5C3.89543 16 3 16.8954 3 18V19C3 20.1046 3.89543 21 5 21H6C7.10457 21 8 20.1046 8 19V18C8 16.8954 7.10457 16 6 16Z"
                   fill="#969696"
                 />
               </svg>
@@ -125,65 +133,62 @@
         </ul>
       </div>
     </header>
-    <main>
+    <main class="mt-[100px] px-4 py-20 grid justify-center">
       <img
-        class="h-dvh w-dvw"
+        class="h-dvh fixed -z-10 w-dvw"
         src="/assets/images/background.png"
         decoding="async"
         loading="eager"
       />
-      <div class="left-6 z-10 absolute top-32 max-w-[327px]">
-        <div class="collapse collapse-arrow bg-base-200/50 backdrop-blur-lg">
-          <input type="radio" name="my-accordion-2" />
-          <div class="collapse-title text-sm font-medium">Earth</div>
-          <div class="collapse-content">
-            <p class="text-3xl font-sans font-bold mb-3">Earth</p>
-            <p class="text-sm">
-              Earth is the third planet from the Sun in our solar system and the
-              only one known to support life. Often called the "Blue Planet" due
-              to its vast oceans of liquid water, Earth has an atmosphere
-              primarily composed of nitrogen and oxygen, essential for
-              sustaining life as we know it. Its surface is diverse, featuring
-              continents, oceans, and a variety of ecosystems, making it a
-              unique world within our solar system.
-            </p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow bg-base-200/50 backdrop-blur-lg">
-          <input type="radio" name="my-accordion-2" />
-          <div class="collapse-title text-sm font-medium">Missions</div>
-          <div class="collapse-content grid gap-5">
-            <p class="text-3xl font-sans font-bold">Missions</p>
-            <ol class="list-decimal pl-6 text-sm grid gap-2">
-              <li>Planet Comparison</li>
-              <li>Ecosystems and Biodiversity</li>
-              <li>Rotation and Revolution Simulation</li>
-              <li>Develop a Presentation or Model</li>
-            </ol>
-            <button class="btn btn-primary">Play</button>
-          </div>
-        </div>
-      </div>
-
       <div
-        class="absolute w-fit lg:w-fit top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-11 max-w-[804px] mx-auto"
       >
-        <div class="w-fit relative lg:w-[758px] lg:h-[758px] flex">
-          <img
-            class="lg:aspect-auto w-[250px] lg:w-full object-cover h-[250px] lg:h-full"
-            src="/assets/images/earth-mission.png"
-            decoding="async"
-            loading="lazy"
-          />
+        <div class="rounded-xl p-4 grid gap-4 border border-base-300/20">
+          <figure class="h-[247px]">
+            <img
+              class="w-full aspect-video h-full"
+              src="/assets/images/solar-eclipse.png"
+              decoding="async"
+              loading="lazy"
+            />
+          </figure>
+          <div class="grid gap-2">
+            <p>Solar eclipse</p>
+            <h2 class="font-bold">8 de abril de 2024</h2>
+            <p class="text-base-content/50 text-sm">Vista de la simulación</p>
+          </div>
         </div>
 
-        <div class="absolute top-1 right-1 lg:top-24 lg:right-16">
-          <img
-            class="aspect-auto"
-            src="/assets/images/moon-mission.png"
-            decoding="async"
-            loading="lazy"
-          />
+        <div class="rounded-xl p-4 grid gap-4 border border-base-300/20">
+          <figure class="h-[247px]">
+            <img
+              class="w-full aspect-video h-full"
+              src="/assets/images/solar-eclipse.png"
+              decoding="async"
+              loading="lazy"
+            />
+          </figure>
+          <div class="grid gap-2">
+            <p>Solar eclipse</p>
+            <h2 class="font-bold">8 de abril de 2024</h2>
+            <p class="text-base-content/50 text-sm">Vista de la simulación</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl p-4 grid gap-4 border border-base-300/20">
+          <figure class="h-[247px]">
+            <img
+              class="w-full aspect-video h-full"
+              src="/assets/images/solar-eclipse.png"
+              decoding="async"
+              loading="lazy"
+            />
+          </figure>
+          <div class="grid gap-2">
+            <p>Solar eclipse</p>
+            <h2 class="font-bold">8 de abril de 2024</h2>
+            <p class="text-base-content/50 text-sm">Vista de la simulación</p>
+          </div>
         </div>
       </div>
     </main>

@@ -17,6 +17,7 @@ import { fetcher } from "./utils";
     "https://cosmicview-back.onrender.com/all/",
     {
       method: "GET",
+      mode: "no-cors",
     }
   );
   const container = document.querySelector("#app");
