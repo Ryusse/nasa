@@ -1,17 +1,21 @@
-:root{
-  --primary-color: 0, 0%, 100%;
-  --primary-content: 0, 0%, 9%;
-  --secondary: #4400ff;
-  --secondary-content: #d0daff;
-  --neutral: #040404;
-  --neutral-content: 0, 0%, 77%;
-  --base-100: 0, 0%, 0%;
-  --base-200: 0, 0%, 12%;
-  --base-300: 0, 0%, 59%;
-  --base-content: 0, 0%, 100%;
-  --error: #ff4e6a;
-  --error-content: #160204;
+@layer base {
+  html {
+    @apply font-mono;
+    overflow: hidden;
+  }
 
-  --font-family-tourney: 'Tourney Variable', system-ui;
-  --font-family-roboto: 'Roboto', sans-serif;
+  body {
+    display: grid;
+    overflow: hidden;
+  }
+
+  p {
+    margin-block: 0;
+  }
+
+  button {
+    color: inherit;
+    background-color: transparent;
+    border: none;
+  }
 }

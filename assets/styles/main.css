@@ -1,28 +1,10 @@
-@import "normalize.css";
-@import "base.css";
+@import './base.css';
 
-html {
-  overflow: hidden;
-  background-color: hsl(var(--base-100));
-  color: hsl(var(--base-content));
-  font-family: var(--font-family-roboto);
-  height: 100dvh;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-display: grid;
-  overflow: hidden;
-}
 
-p {
-  margin-block: 0;
-}
-
-button {
-  color: inherit;
-  background-color: transparent;
-  border: none;
-}
 
 .btn {
   display: flex;
@@ -58,8 +40,8 @@ button {
   top: 0;
   left: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 50%, rgba(87, 87, 87, 0.00) 87.93%);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
   align-items: center;
   padding-inline: 2rem;
   padding-block: 1rem;

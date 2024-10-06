@@ -8,7 +8,38 @@
   </head>
   <body>
     <header class="header">
+      <div class="tooltip" data-tip="hello">
+        <button class="header__button"></button>
+      </div>
+
       <h1 class="header__title">Cosmic Touch</h1>
+
+      <div class="dropdown dropdown-end">
+        <div class="tooltip tooltip-left" data-tip="Menu">
+          <button tabindex="0" role="button" class="btn btn-ghost">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.5 7H24.5V9.33333H3.5V7ZM3.5 12.8333H24.5V15.1667H3.5V12.8333ZM3.5 18.6667H24.5V21H3.5V18.6667Z"
+                fill="#FAFAFA"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <ul
+          tabindex="0"
+          class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+        >
+          <li><a>Item 1</a></li>
+          <li><a>Item 2</a></li>
+        </ul>
+      </div>
     </header>
     <!-- <div data-alert class="alert alert-error"></div> -->
     <div class="filters">
