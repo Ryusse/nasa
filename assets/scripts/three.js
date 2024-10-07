@@ -17,7 +17,7 @@ import { fetcher } from "./utils";
 
 (async () => {
 	const orbitsData = await fetcher(
-		"https://cosmicview-back.onrender.com/all/",
+		"http://localhost:8000/all/",
 		{
 			method: "GET",
 		}
@@ -65,7 +65,7 @@ import { fetcher } from "./utils";
 
 	// Objects
 	// Sun
-	const sunGeometry = new THREE.SphereGeometry(36, 128, 128);
+	const sunGeometry = new THREE.SphereGeometry(18, 128, 128);
 	const sunMaterial = new THREE.MeshBasicMaterial({
 		map: sunTexture,
 	});
@@ -81,7 +81,7 @@ import { fetcher } from "./utils";
 	scene.add(ambientLight);
 
 	// Sun Clouds
-	const sunCloudGeometry = new THREE.SphereGeometry(20.25, 128, 128);
+	const sunCloudGeometry = new THREE.SphereGeometry(19, 128, 128);
 	const sunCloudMaterial = new THREE.MeshLambertMaterial({
 		color: "yelow",
 		alphaMap: sunClouds,
@@ -110,20 +110,14 @@ import { fetcher } from "./utils";
 	const clock = new THREE.Clock();
 
 	const paintOrbit = (points) => {
-		points.forEach((point) => {
-			points.push(
-				new THREE.Vector3(
-					point.x / 1000000,
-					point.y / 1000000,
-					point.z / 1000000
-				)
-			);
-		});
+    const orbitPoints = points.map((point) => 
+        new THREE.Vector3(point[0], point[1], point[2])
+    );
 
-		const radioGeom = new THREE.BufferGeometry().setFromPoints(points);
-		const radioMat = new THREE.LineBasicMaterial({ color: 0xffffff });
-		return new THREE.Line(radioGeom, radioMat);
-	};
+    const radioGeom = new THREE.BufferGeometry().setFromPoints(orbitPoints);
+    const radioMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+    return new THREE.Line(radioGeom, radioMat);
+};
 
 	orbitsData.planets.forEach((planet) => {
 		const orbits = paintOrbit(planet.orbit);
