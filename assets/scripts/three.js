@@ -283,5 +283,5 @@ import { fetcher } from "./utils";
 		window.requestAnimationFrame(loop);
 	};
 
-	loop();
+  loop();
 })();
